@@ -52,6 +52,8 @@ typedef enum
 typedef struct
 {
     void *address;
+    size_t size;
+    uint64_t magic;
 } CP_ElementData;
 
 typedef struct
@@ -106,6 +108,6 @@ int CP_ElementPutByte(CP_PackagePacker *packer, uint8_t byte);
 void CP_GetNextElement(CP_PackagePacker *packer);
 unsigned long long CP_ChecksumCalculate(CP_PackagePacker *packer);
 /* Generate Package to Buffer */
-void CP_GeneratePackage(CP_PackagePacker *packer, ...);
+uint32_t CP_GeneratePackage(CP_PackagePacker *packer, ...);
 
 #endif /* COMMON_PROTOCOL_H_ */
