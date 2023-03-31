@@ -203,6 +203,8 @@ void CP_GetNextElement(CP_PackagePacker *packer)
 #ifdef COMMON_PROTOCOL_DEBUG
         printk("CP Debug: Next Element Type:%d, Size:%ld\n", packer->config->type, packer->data->size);
 #endif
+        if(packer->data->size == 0)
+        	CP_GetNextElement(packer);
     }
     else
     {
