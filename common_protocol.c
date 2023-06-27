@@ -184,6 +184,7 @@ void CP_GetBindingLength(CP_PackagePacker *packer)
         if (packer->configArray[i].type == CP_ELEMENT_TYPE_LENGTH)
         {
             CP_GetElementValue(packer, i, &packer->data->size);
+            packer->data->size = packer->data->size > packer->config->size ? packer->config->size : packer->data->size;
         }
     }
 }
