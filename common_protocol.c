@@ -217,9 +217,10 @@ void CP_GetNextElement(CP_PackagePacker *packer)
 
 void CP_PackerPutByte(CP_PackagePacker *packer, uint8_t byte)
 {
+    packer->bufferIndex++;
     CP_HandleResult result = CP_ElementPutByte(packer, byte);
     if (result == CP_SUCCESS)
-        packer->bufferIndex++;
+        return;
     else if (packer->bufferIndex != 0)
     {
         if(packer->callback != NULL)
